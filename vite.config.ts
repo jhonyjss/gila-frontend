@@ -9,6 +9,10 @@ export default defineConfig({
       {
         find: "@repository",
         replacement: path.resolve(__dirname, "./src/api/repository")
+      },
+      {
+        find: "@",
+        replacement: path.resolve(__dirname, "./src")
       }
     ]
   }

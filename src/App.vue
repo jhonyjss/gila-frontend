@@ -1,25 +1,26 @@
 <script setup lang="ts">
-  import CategoryCard from "./components/Categories/CategoryCard.vue";
-  import { onBeforeMount, ref } from "vue";
-  import { all as allCategories } from "@repository/categories.repo";
-  import { ICategories } from "./components/Categories/ICategories.interface";
-
-  let categories = ref<ICategories[]>([]);
-
-  onBeforeMount(async () => {
-    try {
-      const response = await allCategories();
-      categories.value = response.data;
-    } catch (error) {
-      console.error("Error fetching categories:", error);
-    }
-  });
+  import CategoryOptions from "./components/Categories/CategoryOptions.vue";
+  import NotificationsOptions from "./components/Notifications/NotificationsOptions.vue";
+  import MessageTextarea from "./components/Messages/MessageTextarea.vue";
+  import TableLogs from "./components/Logs/TableLogs.vue";
 </script>
 
 <template>
-  <div class="container mx-auto h-screen">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5">
-      <CategoryCard v-for="category in categories" :title="category.name" />
+  <div class="container mx-auto h-screen flex justify-center items-center">
+    <div>
+      <div class="mt-5">
+        <CategoryOptions />
+      </div>
+      <div class="mt-5">
+        <NotificationsOptions />
+      </div>
+      <div class="mt-5">
+        <MessageTextarea />
+      </div>
+
+      <div class="mt-5">
+        <TableLogs />
+      </div>
     </div>
   </div>
 </template>

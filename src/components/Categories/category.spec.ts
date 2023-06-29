@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { mount } from "@vue/test-utils";
-import CategoryCard from "./CategoryCard.vue";
+import CategoryOptions from "./CategoryOptions.vue";
 import { all } from "@repository/categories.repo";
 import { ICategories } from "./ICategories.interface";
 
@@ -16,11 +16,7 @@ describe("CategoryCard", () => {
     // Mock the categories response from the repository
     getAll.mockReturnValueOnce(mockCategories as ICategories[] as never);
 
-    const wrapper = mount(CategoryCard, {
-      props: {
-        title: "Sports" // Provide the title prop value here
-      }
-    });
+    const wrapper = mount(CategoryOptions);
 
     // Wait for the onBeforeMount hook to complete
     await wrapper.trigger("beforemount");
